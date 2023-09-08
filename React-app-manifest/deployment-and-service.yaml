@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: react-container
-        image: stefregistry.azurecr.io/reactapprepo
+        image: aksforgecontainerregistry.azurecr.io/reactapprepo
         ports:
         - containerPort: 3000
 ---
