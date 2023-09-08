@@ -6,6 +6,7 @@ pool:
 
 variables:
   dockerfilePath: '$(Build.SourcesDirectory)/Dockerfile'
+  imageRepository: 'aksforgefinal'
   tag: '$(Build.BuildId)'
 
 stages:
@@ -19,7 +20,7 @@ stages:
       displayName: Build and push an image to container registry
       inputs:
         containerRegistry: 'ACRserviceprinciplenew'
-        repository: 'aksforgefinal'
+        repository: $(imageRepository)
         command: 'buildAndPush'
         Dockerfile: $(dockerfilePath)
         tags: |
