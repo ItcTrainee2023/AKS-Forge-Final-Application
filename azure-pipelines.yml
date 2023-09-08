@@ -46,8 +46,3 @@ stages:
         PathtoPublish: '$(Build.ArtifactStagingDirectory)'
         ArtifactName: 'kube-manifests'
         publishLocation: 'Container'
-<<<<<<< HEAD
-
-    
-=======
->>>>>>> 5592a4910403c4922dfa6eacdcc137903eced786
