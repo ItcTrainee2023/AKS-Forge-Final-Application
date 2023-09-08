@@ -18,34 +18,33 @@ variables:
   # Agent VM image name
   vmImageName: 'ubuntu-latest'
 
-  stages:
-    - stage: Build
-      displayName: Build and push Docker Image
-      jobs:
-      - job: Build
-        displayName: Build job
+stages:
+- stage: Build
+  displayName: Build and push stage
+  jobs:
+  - job: Build
+    displayName: Build
+    pool:
+      vmImage: $(vmImageName)
 
       steps:
       - task: Docker@2
+        displayName: Build and push an image to container registry
         inputs:
-          containerRegistry: 'ACRserviceprinciplenew'
-          repository: 'nextjs-app1'
+          containerRegistry: 'AKSForgeContainerRegistry'
+          repository: '$(imageRepository)'
           command: 'buildAndPush'
           Dockerfile: '**/Dockerfile'
-          tags: |
-            latest
-            $(Build.BuildId)
-      
+          tags: '$(tag)'
+
       - task: CopyFiles@2
         inputs:
-          SourceFolder: '$(System.DefaultWorkingDirectory)/kube-manifests/'
-          Contents: |
-            deployment.yml
-            service.yml
+          SourceFolder: '$(System.DefaultWorkingDirectory)/React-app-manifest'
+          Contents: '**'
           TargetFolder: '$(Build.ArtifactStagingDirectory)'
-
+          OverWrite: true
       - task: PublishBuildArtifacts@1
         inputs:
           PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-          ArtifactName: 'drop'
+          ArtifactName: 'kube-manifests'
           publishLocation: 'Container'
