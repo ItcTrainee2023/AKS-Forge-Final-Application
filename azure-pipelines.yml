@@ -10,9 +10,9 @@ resources:
 
 variables:
   # Container registry service connection established during pipeline creation
-  dockerRegistryServiceConnection: '623b5260-cd2f-4392-bf7b-0aba7c30852f'
+  dockerRegistryServiceConnection: '606e824b-aaf7-4b4e-9057-b459f6a4436d'
   imageRepository: 'reactapprepo'
-  containerRegistry: 'stefregistry.azurecr.io'
+  containerRegistry: 'aksforgecontainerregistry.azurecr.io'
   dockerfilePath: '$(Build.SourcesDirectory)/Dockerfile'
   tag: '$(Build.BuildId)'
 
