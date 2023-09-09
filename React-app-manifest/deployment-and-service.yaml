@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: react-container
-        image: aksforgecontainerregistry.azurecr.io/aksforgefinal:$(tag)
+        image: aksforgecontainerregistry.azurecr.io/aksforgefinal
         ports:
         - containerPort: 3000
 ---
@@ -41,7 +41,7 @@ spec:
 # metadata:
 #   name: "react-app"
 #   labels:
-#     app: "react-app"
+#     app: "react-app....................................................."
 # spec:
 #   replicas: 3
 #   selector:
