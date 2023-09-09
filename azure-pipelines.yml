@@ -65,17 +65,17 @@ resources:
 - repo: self
 
 variables:
-  # Container registry service connection established during pipeline creation
-
   imageRepository: 'aksforgefinal'
   containerRegistry: 'aksforgecontainerregistry.azurecr.io'
   dockerfilePath: '$(Build.SourcesDirectory)/Dockerfile'
+  tag: '$(Build.BuildId)'
 
+  # Container registry service connection established during pipeline creation
   # dockerRegistryServiceConnection: '623b5260-cd2f-4392-bf7b-0aba7c30852f'
   # containerRegistry: 'aksforgecontainerregistry.azurecr.io'
   # dockerfilePath: '$(Build.SourcesDirectory)/Dockerfile'
 
-  tag: '$(Build.BuildId)'
+
 
   # Agent VM image name
   vmImageName: 'ubuntu-latest'
@@ -119,7 +119,8 @@ stages:
         Dockerfile: '**/Dockerfile'
         tags: |
           latest
-          $(Build.BuildId)
+          $(tag)
+
     - task: CopyFiles@2
       inputs:
         SourceFolder: '$(System.DefaultWorkingDirectory)/React-app-manifest/'
