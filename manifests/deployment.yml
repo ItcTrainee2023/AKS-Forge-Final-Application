@@ -1,0 +1,19 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: dockerimage01 
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dockerimage01
+  template:
+    metadata:
+      labels:
+        app: dockerimage01 
+    spec:
+      containers:
+        - name: dockerimage01 
+          image: aksforgecontainerregistry.azurecr.io/dockerimage01
+          ports:
+          - containerPort: 80
