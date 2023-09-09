@@ -118,7 +118,6 @@ stages:
         command: 'buildAndPush'
         Dockerfile: '**/Dockerfile'
         tags: |
-          latest
           $(tag)
 
     - task: CopyFiles@2
