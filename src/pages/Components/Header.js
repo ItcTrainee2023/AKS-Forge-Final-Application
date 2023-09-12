@@ -9,7 +9,7 @@ export default function Header() {
                 <br/>
                 with bills included
              </p>
-            <p className='motto'>A simple and faster way to find student accomodation</p>
+            <p className='motto'>A simple and faster way to find WORKER accomodation</p>
         </span>
     </div>
   )
